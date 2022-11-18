@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from 'react'
-import { TUser } from 'types'
+import { User } from 'types'
 
 interface IUserContext {
-  user: TUser | null
-  setUser: (user: TUser | null) => void
+  user: User | null
+  setUser: React.Dispatch<React.SetStateAction<User | null>>
   removeUser: () => void
 }
 
@@ -16,7 +16,7 @@ export const CurrentUserContextProvider = ({
 }: {
   children: React.ReactNode
 }) => {
-  const [user, setUser] = useState<TUser | null>(null)
+  const [user, setUser] = useState<User | null>(null)
 
   const removeUser = () => setUser(null)
 

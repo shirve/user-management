@@ -1,3 +1,15 @@
+$color-black: #121212;
+$color-grey: #a5a5a5;
+$color-white: #fafafa;
+$color-danger: #dc3545;
+
+$size-small: 0.75rem;
+$size-normal: 1rem;
+$size-large: 1.25rem;
+
+$border-default: 1px $color-black solid;
+$border-radius-default: 4px;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +22,254 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.app {
+  margin: auto;
+  max-width: 600px;
+  padding: 0 1rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-bottom: $border-default;
+  &-links {
+    display: flex;
+  }
+  &-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-size: $size-large;
+    color: $color-black;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    margin-bottom: -1px;
+    border-bottom: 3px solid transparent;
+    &:hover {
+      position: relative;
+      top: 1px;
+      margin-bottom: -1px;
+      border-bottom: 3px solid $color-black;
+    }
+    &--active {
+      margin-bottom: -2px;
+      border-bottom: 3px solid $color-black;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  &-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $size-large;
+    font-weight: 700;
+    background-color: $color-black;
+    color: $color-white;
+    padding: 0.5rem 0.75rem;
+    border-radius: $border-radius-default;
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 1rem;
+      &:nth-child(2n-1) {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  &-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    &-with-in-row-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    &-input {
+      border: $border-default;
+      border-radius: $border-radius-default;
+      font-size: $size-normal;
+      padding: 0.5rem;
+      &:focus-visible {
+        outline: none;
+      }
+      &::placeholder {
+        color: $color-grey;
+      }
+      &[type=checkbox] {
+        border: $border-default;
+        border-radius: $border-radius-default;
+        appearance: none;
+        height: 1.5rem;
+        width: 1.5rem;
+        margin: 0;
+        background-color: #fff;
+        cursor: pointer;
+        &:checked {
+          background-image: url(./assets/check-icon.jpg);
+          background-size: cover;
+        }
+      }
+      &--error {
+        border-color: $color-danger;
+        color: $color-danger;
+        &::placeholder {
+          color: $color-danger;
+        }
+      }
+    }
+    &-error {
+      color: $color-danger;
+      font-size: $size-small;
+    }
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  &-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  &-row {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    height: 40px;
+    &:nth-child(2n-1) {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: $border-radius-default;
+    }
+  }
+  &-col {
+    flex-grow: 1;
+    padding: 0;
+    &:last-child {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.button {
+  border: $border-default;
+  border-radius: $border-radius-default;
+  display: flex;
+  align-items: center;
+  color: $color-white;
+  background-color: $color-black;
+  font-size: $size-normal;
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  &:hover {
+    color: $color-black;
+    background-color: $color-white;
+  }
+  &:disabled {
+    background-color: $color-grey;
+    border-color: $color-grey;
+    color: $color-white;
+    cursor: not-allowed;
+  }
+  &--outlined {
+    color: $color-black;
+    background-color: $color-white;
+    &:hover {
+      color: $color-white;
+      background-color: $color-black;
+    }
+  }
+  &--small {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+.icon-button {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  font-size: $size-large;
+  cursor: pointer;
+  padding: 0;
+}
+
+.link {
+  color: $color-black;
+  cursor: pointer;
+  text-decoration: none;
+  &--underlined {
+    text-decoration: underline;
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 2rem);
+}
+
+.modal {
+  &-overlay {
+    z-index: 999;
+    display: flex;
+    position: fixed;
+    inset: 0px;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: modal-blur-in 0.5s forwards;
+  }
+  &-content {
+    position: absolute;
+    inset: 1rem;
+    height: fit-content;
+    width: fit-content;
+    min-width: 400px;
+    margin: auto;
+    padding: 1rem;
+    background: $color-white;
+    border-radius: $border-radius-default;
+  }
+}
+
+@keyframes modal-blur-in {
+  from {
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  to {
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+  }
 }
