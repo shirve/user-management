@@ -1,15 +1,6 @@
 import { Button, Card, Table, UserUpdateModal } from 'components'
 import { useState } from 'react'
-
-const user = {
-  id: '1',
-  firstName: 'Jan',
-  lastName: 'Kowalsko',
-  username: 'jkowalksi',
-  age: 24,
-  email: 'jkowalski@gmail.com',
-  roles: ['ADMIN'],
-}
+import { mockUser } from 'constants/mocks'
 
 export const User = () => {
   const [isUserUpdateModalOpen, setIsUserUpdateModalOpen] = useState(false)
@@ -23,7 +14,7 @@ export const User = () => {
         <Card.Content>
           <Table>
             <Table.Body>
-              {Object.entries(user).map(([key, value]) => (
+              {Object.entries(mockUser).map(([key, value]) => (
                 <Table.Row key={key}>
                   <Table.Col>{key}</Table.Col>
                   <Table.Col>{value}</Table.Col>
@@ -37,7 +28,7 @@ export const User = () => {
         </Card.Footer>
       </Card>
       <UserUpdateModal
-        user={user}
+        user={mockUser}
         isOpen={isUserUpdateModalOpen}
         onOpen={onUserUpdateModalOpen}
       />

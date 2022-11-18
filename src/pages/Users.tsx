@@ -10,25 +10,7 @@ import { useState } from 'react'
 import { IoSettingsSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import { User } from 'types'
-
-const users: User[] = [
-  {
-    firstName: 'Jan',
-    lastName: 'Kowalsko',
-    username: 'jkowalksi',
-    age: 24,
-    email: 'jkowalski@gmail.com',
-    roles: ['ADMIN'],
-  },
-  {
-    firstName: 'Jan',
-    lastName: 'Kowalsko',
-    username: 'jkowalksi',
-    age: 24,
-    email: 'jkowalski@gmail.com',
-    roles: ['ADMIN'],
-  },
-]
+import { mockUsers } from 'constants/mocks'
 
 export const Users = () => {
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false)
@@ -50,8 +32,8 @@ export const Users = () => {
         <Card.Content>
           <Table>
             <Table.Body>
-              {users.length
-                ? users.map((user) => (
+              {mockUsers.length
+                ? mockUsers.map((user) => (
                     <Table.Row key={user.username}>
                       <Table.Col>
                         <Link className='link' to={`/users/${user.username}`}>
